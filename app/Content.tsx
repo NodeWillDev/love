@@ -4,9 +4,12 @@ import { useRef } from 'react';
 import { Particles } from './Particles';
 import { Button } from './Button';
 import { supabase } from './client';
+import { useRouter } from 'next/navigation';
 
 export const Content = () => {
   const containerRef = useRef(null);
+
+  const router = useRouter();
 
   return (
     <div
@@ -28,8 +31,16 @@ export const Content = () => {
       </h2>
 
       <form
-        onSubmit={async () => {
-          await supabase.from('love').insert({ response: 'SIM' });
+        onSubmit={async (e) => {
+          e.preventDefault();
+
+          const { error } = await supabase
+            .from('love')
+            .insert({ response: 'SIM' });
+
+          if (!error) {
+            router.refresh();
+          }
         }}
         className='flex items-center justify-center gap-6'>
         <button

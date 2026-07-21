@@ -3,6 +3,7 @@ import { Content } from './Content';
 import { Display } from './Display';
 import { Particles } from './Particles';
 
+export const dynamic = 'force-dynamic';
 const Home = async () => {
   const data = (await supabase.from('love').select().limit(1).single()).data;
   const time = new Intl.DateTimeFormat('pt-BR', {

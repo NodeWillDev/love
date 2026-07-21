@@ -22,7 +22,6 @@ export const Button = (props: Props) => {
     const container = props.containerRef.current;
 
     const containerRect = container.getBoundingClientRect();
-    console.log(containerRect);
     const random = (min: number, max: number) =>
       Math.random() * (max - min) + min;
 
@@ -59,20 +58,7 @@ export const Button = (props: Props) => {
         left: `${!position.x ? '60%' : position.x + 'px'}`,
         top: `${!position.y ? '88%' : position.y + 'px'}`,
       }}
-      className='
-      absolute transition-all
-    rounded-full
-    border-2
-    border-violet-200
-    bg-white
-    px-8
-    py-3
-    font-semibold
-    text-violet-700
-    shadow-md
-    duration-200
-    ease-out
-  '>
+      className='absolute transition-all rounded-full border-2 border-violet-200 bg-white px-8 py-3 font-semibold text-violet-700 shadow-md duration-200 ease-out'>
       Não 😔
     </button>
   );
